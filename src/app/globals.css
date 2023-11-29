@@ -1,4 +1,4 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -24,4 +24,25 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+} */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@100;300;500;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Paleta de cores do Gasify */
+  --gasify-fundo: #e4dbd2;
+  --gasify-verde-claro: #60a851;
+  --gasify-verde: #377f33;
+  --gasify-verde-escuro: #112410;
+  --gasify-cinza-claro: #848484;
+  --gasify-cinza: #525252;
+  --gasify-preto: #1D1D1F;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
 }
