@@ -5,7 +5,7 @@ export default function Home() {
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="./images/logoLS-no-bg.svg" type="image/x-icon" />
+        <link rel="icon" href="/images/logoLS-no-bg.svg" type="image/x-icon" />
 
         <title>Gasify</title>
       </head>
@@ -13,27 +13,27 @@ export default function Home() {
       <body className="bg-[--gasify-branco] min-h-[100vh]">
         <header className="bg-white content-center max-w-[100vw] flex rounded-3xl justify-between mx-12 mt-12 mb-6 p-4 shadow-md">
           <div id="gasify-logo" className="flex content-center items-center space-x-2">
-            <img src="./images/logoLS-no-bg.svg" alt="Gasify logo" className="" />
+            <img src="/images/logoLS-no-bg.svg" alt="Gasify logo" className="" />
             <Gasify />
           </div>
           <div className="flex justify-between items-center">
-            <img src="./images/logo_posto.svg" alt="Logo posto canaã" />
+            <img src="/images/logo_posto.svg" alt="Logo posto canaã" />
             <p className="text-[--gasify-preto-claro] ml-8 hidden lg:flex lg:flex-col">
               Rede de Postos de Combustível Canaã
             </p>
           </div>
           <div className="flex justify-between items-center">
-            <img className="max-w-10 max-h-10 rounded-full m-2" id="user" src="./images/FrentistaLC.jpg" alt="User icon" />
+            <img className="max-w-10 max-h-10 rounded-full m-2" id="user" src="/images/FrentistaLC.jpg" alt="User icon" />
             <div id="username" className="hidden lg:flex lg:flex-col">
               <p className="text-[--gasify-preto-claro] text-center">Bem-vindo</p>
               <span className="font-semibold">Luiz Carlos!</span>
             </div>
-            <img id="arrow" src="./images/icons/logout.svg" alt="Arrow icon" className="ml-12 w-7" />
+            <img id="arrow" src="/images/icons/logout.svg" alt="Arrow icon" className="ml-12 w-7" />
           </div>
         </header>
 
         <div id="compatibility" className="md:hidden flex flex-col justify-center items-center text-center h-[70vh] my-auto">
-          <img src="./images/compatibility.png" alt="Compatibility icon" className="w-40 h-40" />
+          <img src="/images/compatibility.png" alt="Compatibility icon" className="w-40 h-40" />
           <p className="text-[--gasify-preto-claro] ml-2 font-bold font-2xl">
             Seu dispositivo não é compatível com o Gasify
           </p>
@@ -72,7 +72,7 @@ export default function Home() {
 
             <div className="shadow-md w-[50%] p-4 space-y-2 rounded-lg">
               <p className="flex justify-center items-center text-[--gasify-verde] font-bold text-center text-4xl" id="total-cc">
-                <img src="./images/logoLS-no-bg.svg" className="mr-2" alt="Carbon Cash icon" /><span id="total-cc-text">0
+                <img src="/images/logoLS-no-bg.svg" className="mr-2" alt="Carbon Cash icon" /><span id="total-cc-text">0
                   CC</span>
               </p>
               <p className="text-[--gasify-preto-claro] text-center text-xl font-semibold">
@@ -90,7 +90,7 @@ export default function Home() {
           </form>
         </main>
         <footer className="">
-          <img className="w-[100%]" src="./images/footer.png" alt="" />
+          <img className="w-[100%]" src="/images/footer.png" alt="" />
         </footer>
         <script type="module" src="./src/main.js"></script>
         <script type="module" src="./src/atendimento.js"></script>
