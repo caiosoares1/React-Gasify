@@ -1,15 +1,12 @@
 import * as image from '@/components/images'
-export default function Home() {
-  return (
-    <>
-      <head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/images/logoLS-no-bg.svg" type="image/x-icon" />
-        <title>Gasify</title>
-      </head>
+import CardProduto from '@/components/cardProduto'
+import { products } from '@/data/products'
 
-      <body className="bg-[--gasify-branco] min-h-[100vh]">
+export default function Abastecimento() {
+    return (
+        <>
+      <div className="bg-[--gasify-branco] min-h-[100vh]">
+        {/* Transformar em componente */}
         <header className="bg-white content-center max-w-[100vw] flex rounded-3xl justify-between mx-12 mt-12 mb-6 p-4 shadow-md">
           <div id="gasify-logo" className="flex content-center items-center space-x-2">
             <image.GasifyLogo />
@@ -31,6 +28,7 @@ export default function Home() {
           </div>
         </header>
 
+        {/* Transformar em componente */}
         <div id="compatibility" className="md:hidden flex flex-col justify-center items-center text-center h-[70vh] my-auto">
           <image.Compatibility />
           <p className="text-[--gasify-preto-claro] ml-2 font-bold font-2xl">
@@ -80,7 +78,9 @@ export default function Home() {
             </div>
           </div>
           <form>
-            <div id="card-combustiveis" className="flex flex-wrap justify-between mx-auto my-12 gap-y-12 gap-x-12"></div>
+            <div id="card-combustiveis" className="flex flex-wrap justify-between mx-auto my-12 gap-y-12 gap-x-12">
+              {products.map(product => <CardProduto product={product}/>)}
+            </div>
 
             <button type="submit"
               className="w-full transition-all bg-[--gasify-verde-claro] mt-8 rounded-lg text-white font-semibold h-16 hover:bg-[--gasify-verde]">
@@ -93,7 +93,7 @@ export default function Home() {
         </footer>
         <script type="module" src="./src/main.js"></script>
         <script type="module" src="./src/atendimento.js"></script>
-      </body>
+      </div>
     </>
-  )
+    )
 }
