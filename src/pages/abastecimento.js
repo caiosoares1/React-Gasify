@@ -1,8 +1,20 @@
+import { useState } from 'react'
+
 import * as image from '@/components/images'
 import CardProduto from '@/components/cardProduto'
 import { products } from '@/data/products'
 
 export default function Abastecimento() {
+    const [valorTotal, setValorTotal] = useState(0);
+    const [CCTotal, setCCTotal] = useState(0);
+
+    const onChangeCard = (oldValorCard, oldCCCard, newValorCard=0, newCCCard=0) => {
+      const newValorTotal = (valorTotal - Number(oldValorCard) + Number(newValorCard)).toFixed(2);
+      const newCCTotal = (CCTotal - Number(oldCCCard) + Number(newCCCard)).toFixed(2);
+      setValorTotal(newValorTotal);
+      setCCTotal(newCCTotal);
+    }
+
     return (
         <>
       <div className="bg-[--gasify-branco] min-h-[100vh]">
@@ -60,7 +72,7 @@ export default function Abastecimento() {
           <div id="saldo-cards" className="flex justify-around space-x-8 mx-4 mt-8">
             <div className="shadow-md w-[50%] p-4 space-y-2 rounded-lg flex flex-col justify-around">
               <p className="text-[--gasify-verde] font-bold text-center text-4xl" id="total">
-                R$ 0,00
+                {valorTotal ? "R$ " + valorTotal : "R$ 0,00"}
               </p>
               <p className="text-[--gasify-preto-claro] text-center text-xl font-semibold">
                 Valor a pagar
@@ -69,7 +81,7 @@ export default function Abastecimento() {
 
             <div className="shadow-md w-[50%] p-4 space-y-2 rounded-lg">
               <p className="flex justify-center items-center text-[--gasify-verde] font-bold text-center text-4xl" id="total-cc">
-                <image.GasifyLogo /><span id="total-cc-text" className="ml-2">0
+                <image.GasifyLogo /><span id="total-cc-text" className="ml-2">{CCTotal ? CCTotal : 0}
                   CC</span>
               </p>
               <p className="text-[--gasify-preto-claro] text-center text-xl font-semibold">
@@ -79,7 +91,7 @@ export default function Abastecimento() {
           </div>
           <form>
             <div id="card-combustiveis" className="flex flex-wrap justify-between mx-auto my-12 gap-y-12 gap-x-12">
-              {products.map(product => <CardProduto product={product}/>)}
+              {products.map(product => <CardProduto product={product} onChangeCard={onChangeCard}/>)}
             </div>
 
             <button type="submit"

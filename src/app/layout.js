@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="/images/logoLS-no-bg.svg" type="image/x-icon" />
+        <link rel="icon" href="/public/favicon.ico" type="image/x-icon" />
         <title>Gasify</title>
       </head>
       <body className={poppins.className}>{children}</body>
