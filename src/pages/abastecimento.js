@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import * as image from '@/components/images'
 import CardProduto from '@/components/cardProduto'
-import { products } from '@/data/products'
+// import { products } from '@/data/products'
+import { supabase } from '@/api/supabase'
 
 export default function Abastecimento() {
     const [valorTotal, setValorTotal] = useState(0);
@@ -14,7 +15,22 @@ export default function Abastecimento() {
       setValorTotal(newValorTotal);
       setCCTotal(newCCTotal);
     }
-
+    
+    const [products, setProducts] = useState([]);
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await supabase.get('/combustivel'); 
+          console.log(response.data);
+          setProducts(response.data);
+        } catch (error) {
+          console.error('Erro ao obter dados do Supabase:', error);
+        }
+      };
+  
+      fetchData();
+    }, []);
+    
     return (
         <>
       <div className="bg-[--gasify-branco] min-h-[100vh]">
