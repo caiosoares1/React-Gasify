@@ -85,7 +85,6 @@ export default function Divulgacao (){
             <footer className="relative">
                 <image.Planta />
                 <image.Footer/>
-                <script type="module" src="./src/main.js"></script>
             </footer>
 
         </>
