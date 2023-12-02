@@ -91,7 +91,7 @@ export default function Abastecimento() {
           </div>
           <form>
             <div id="card-combustiveis" className="flex flex-wrap justify-between mx-auto my-12 gap-y-12 gap-x-12">
-              {products.map(product => <CardProduto product={product} onChangeCard={onChangeCard}/>)}
+              {products.map(product => <CardProduto product={product} onChangeCard={onChangeCard} key={product.id}/>)}
             </div>
 
             <button type="submit"
@@ -103,8 +103,6 @@ export default function Abastecimento() {
         <footer className="">
           <image.Footer />
         </footer>
-        <script type="module" src="./src/main.js"></script>
-        <script type="module" src="./src/atendimento.js"></script>
       </div>
     </>
     )
