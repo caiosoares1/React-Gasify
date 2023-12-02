@@ -73,3 +73,61 @@ export function Footer() {
         />
     )
 }
+
+export function Card1() {
+    return (
+        <img
+          src="/images/card1.svg"
+          alt="Card icon"
+        />
+    )
+}
+
+export function Card2() {
+    return (
+        <img
+          src="/images/card2.svg"
+          alt="Card icon"
+        />
+    )
+}
+
+export function Card3() {
+    return (
+        <img
+          src="/images/card3.svg"
+          alt="Card icon"
+        />
+    )
+}
+
+export function Lucro() {
+    return (
+        <img
+          src="/images/Lucro.png"
+          alt="Lucro icon"
+          className="max-w-[5rem]"
+        />
+    )
+}
+
+export function GarotoDivulgacao() {
+    return (
+        <img
+          src="/images/GarotoDivulgacao.png"
+          alt="GarotoDivulgacao icon"
+          className="max-w-[800px] h-[800px]"
+        />
+    )
+}
+
+export function Planta() {
+    return (
+        <img
+          src="/images/planta.png"
+          alt="Planta icon"
+          className="absolute bottom-0 left-0 w-[40rem] h-[40rem]"
+        />
+    )
+}
+

@@ -1,5 +1,6 @@
+import Divulgacao from '@/components/divulgacao';
 export default function Index() {
     return (
-        <h1>Opa</h1>
-    )
+        <Divulgacao />
+    );
 }
