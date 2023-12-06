@@ -1,6 +1,6 @@
 import { formatNumberPer100 } from "../utils"; 
 import { useState } from "react";
-import { supabase } from "@/api/supabase";
+import { supabase } from "@/services/supabase";
 
 export default function CardProduto({product, onChangeCard}) {
     const {id, name, price, cc_for_unit} = product

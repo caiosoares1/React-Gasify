@@ -1,13 +1,19 @@
+'use client';
 import { useState, useEffect } from 'react'
-
 import * as image from '@/components/images'
 import CardProduto from '@/components/cardProduto'
 // import { products } from '@/data/products'
-import { supabase } from '@/api/supabase'
+// import { supabase } from '@/services/supabase'
+import Storage from '@/services/supabase'
+
+async function getProducts() {
+  return await Storage.read('combustivel');
+}
 
 export default function Abastecimento() {
     const [valorTotal, setValorTotal] = useState(0);
     const [CCTotal, setCCTotal] = useState(0);
+    const [products, setProducts] = useState([]);
 
     const onChangeCard = (oldValorCard, oldCCCard, newValorCard=0, newCCCard=0) => {
       const newValorTotal = (valorTotal - Number(oldValorCard) + Number(newValorCard)).toFixed(2);
@@ -16,19 +22,14 @@ export default function Abastecimento() {
       setCCTotal(newCCTotal);
     }
     
-    const [products, setProducts] = useState([]);
+    const loadProducts = async () => {
+      const products = await getProducts();
+      console.log(products);
+      setProducts(products);
+    }
+    
     useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await supabase.get('/combustivel'); 
-          console.log(response.data);
-          setProducts(response.data);
-        } catch (error) {
-          console.error('Erro ao obter dados do Supabase:', error);
-        }
-      };
-  
-      fetchData();
+      loadProducts();
     }, []);
     
     return (
