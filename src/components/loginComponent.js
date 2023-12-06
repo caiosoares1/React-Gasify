@@ -8,7 +8,7 @@ export default function LoginComponent() {
                     <div class="w-[250px] lg:w-auto flex justify-around  gap-x-5">
                         <image.GasifyLogo className="w-[5rem] 2xl:w-[9rem]"/>
                         <image.Gasify className="w-[10rem] 2xl:w-[14rem]"/>
-                            <link rel="icon" href="./images/logoLS-no-bg.svg" type="image/x-icon" />
+                        <link rel="icon" href="./images/logoLS-no-bg.svg" type="image/x-icon" />
                     </div>
                     <image.FolhasVerdesCantoSuperior/>
                 </div>
