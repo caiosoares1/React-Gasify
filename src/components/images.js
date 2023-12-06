@@ -2,21 +2,21 @@ import React from "react";
 
 
 
-export function Gasify() {
+export function Gasify({className='hidden lg:flex'}) {
     return (
         <img
           src="/images/gasify.svg"
-          className="hidden lg:flex"
+          className={className}
           alt="Picture of the author"
         />
     )
 }
 
-export function GasifyLogo() {
+export function GasifyLogo({className='hidden lg:flex'}) {
     return (
         <img
           src="/images/logoLS-no-bg.svg"
-          className="hidden lg:flex"
+          className={className}
           alt="Picture of the author"
         />
     )
@@ -131,3 +131,22 @@ export function Planta() {
     )
 }
 
+export function FolhasVerdesCantoSuperior() {
+    return (
+        <img
+          src="/images/FolhasVerdesCantoSuperior.png"
+          alt="FolhasVerdesCantoSuperior icon"
+          className="hidden md:w-[15rem] md:h-[15rem] md:flex lg:w-[25rem] lg:h-[25rem] 2xl:w-[30rem] 2xl:h-[30rem] fixed top-0 right-0"
+        />
+    )
+}
+
+export function GarotoLogin () {
+    return (
+        <img
+          src="/images/GarotoLogin.png"
+          alt="GarotoLogin icon"
+          className="hidden lg:flex fixed left-0 bottom-0 ml-[-5%] w-[46rem] 2xl:ml-[-5%] 2xl:w-[46rem] self-end md:w-[32rem] md:ml-[-10%]"
+        />
+    )
+}
