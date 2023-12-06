@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react'
 import * as image from '@/components/images'
+import CompatibilityComponent from '@/components/compatibility';
 import CardProduto from '@/components/cardProduto'
 // import { products } from '@/data/products'
 // import { supabase } from '@/services/supabase'
@@ -11,29 +12,29 @@ async function getProducts() {
 }
 
 export default function Abastecimento() {
-    const [valorTotal, setValorTotal] = useState(0);
-    const [CCTotal, setCCTotal] = useState(0);
-    const [products, setProducts] = useState([]);
+  const [valorTotal, setValorTotal] = useState(0);
+  const [CCTotal, setCCTotal] = useState(0);
+  const [products, setProducts] = useState([]);
 
-    const onChangeCard = (oldValorCard, oldCCCard, newValorCard=0, newCCCard=0) => {
-      const newValorTotal = (valorTotal - Number(oldValorCard) + Number(newValorCard)).toFixed(2);
-      const newCCTotal = (CCTotal - Number(oldCCCard) + Number(newCCCard)).toFixed(2);
-      setValorTotal(newValorTotal);
-      setCCTotal(newCCTotal);
-    }
-    
-    const loadProducts = async () => {
-      const products = await getProducts();
-      console.log(products);
-      setProducts(products);
-    }
-    
-    useEffect(() => {
-      loadProducts();
-    }, []);
-    
-    return (
-        <>
+  const onChangeCard = (oldValorCard, oldCCCard, newValorCard = 0, newCCCard = 0) => {
+    const newValorTotal = (valorTotal - Number(oldValorCard) + Number(newValorCard)).toFixed(2);
+    const newCCTotal = (CCTotal - Number(oldCCCard) + Number(newCCCard)).toFixed(2);
+    setValorTotal(newValorTotal);
+    setCCTotal(newCCTotal);
+  }
+
+  const loadProducts = async () => {
+    const products = await getProducts();
+    console.log(products);
+    setProducts(products);
+  }
+
+  useEffect(() => {
+    loadProducts();
+  }, []);
+
+  return (
+    <>
       <div className="bg-[--gasify-branco] min-h-[100vh]">
         {/* Transformar em componente */}
         <header className="bg-white content-center max-w-[100vw] flex rounded-3xl justify-between mx-12 mt-12 mb-6 p-4 shadow-md">
@@ -58,17 +59,7 @@ export default function Abastecimento() {
         </header>
 
         {/* Transformar em componente */}
-        <div id="compatibility" className="md:hidden flex flex-col justify-center items-center text-center h-[70vh] my-auto">
-          <image.Compatibility />
-          <p className="text-[--gasify-preto-claro] ml-2 font-bold font-2xl">
-            Seu dispositivo não é compatível com o Gasify
-          </p>
-          <div className="flex justify-center items-center">
-            <p className="text-[--gasify-preto-claro]">
-              Por favor, acesse o Gasify em um dispositivo com tela maior
-            </p>
-          </div>
-        </div>
+        <CompatibilityComponent />
 
         <nav className="justify-around space-x-8 mx-4 my-14 text-center hidden md:flex">
           <p className="w-[100%] font-medium border-[--gasify-preto] border-b-2 cursor-pointer text-[--gasify-preto] transition-all hover:border-b-[--gasifty-cinza] hover:text-[--gasify-cinza]"
@@ -108,7 +99,7 @@ export default function Abastecimento() {
           </div>
           <form>
             <div id="card-combustiveis" className="flex flex-wrap justify-between mx-auto my-12 gap-y-12 gap-x-12">
-              {products.map(product => <CardProduto product={product} onChangeCard={onChangeCard} key={product.id}/>)}
+              {products.map(product => <CardProduto product={product} onChangeCard={onChangeCard} key={product.id} />)}
             </div>
 
             <button type="submit"
@@ -122,5 +113,5 @@ export default function Abastecimento() {
         </footer>
       </div>
     </>
-    )
+  )
 }
