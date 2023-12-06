@@ -1,5 +1,5 @@
 import * as image from '@/components/images';
-export function Header(){
+export default function Header(){
   return (
         <header className="bg-white content-center max-w-[100vw] flex rounded-3xl justify-between mx-12 mt-12 mb-6 p-4 shadow-md">
           <div id="gasify-logo" className="flex content-center items-center space-x-2">
