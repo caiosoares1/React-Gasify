@@ -1,4 +1,4 @@
-import * as image from '../components/images'
+import * as image from './images'
 
 export default function Divulgacao (){
     return (
