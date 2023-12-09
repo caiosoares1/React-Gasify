@@ -20,7 +20,7 @@ export default function Pagamento() {
                                 CC</span>
                         </p>
                         <p className="text-[--gasify-preto-claro] text-center text-xl font-semibold">
-                            Carbon Cash a receber
+                            Saldo total de Carbon Cash
                         </p>
                     </div>
                 </div>
