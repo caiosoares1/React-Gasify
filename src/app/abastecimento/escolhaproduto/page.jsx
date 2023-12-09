@@ -1,9 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react'
 import * as image from '@/components/images'
-import CompatibilityComponent from '@/components/compatibility';
-import Header from '@/components/header';
 import CardProduto from '@/components/cardProduto'
+import { useRouter } from 'next/router';
 // import { products } from '@/data/products'
 // import { supabase } from '@/services/supabase'
 import Storage from '@/services/supabase'
@@ -30,6 +29,16 @@ export default function Abastecimento() {
     setProducts(products);
   }
 
+  // const handleClick = (event) => {
+  //   event.preventDefault();
+
+  //   // Falta validar se pode prosseguir
+
+  //   // Falta passar os dados para a próxima página
+
+  //   router.push('/abastecimento/usocc');
+  // };
+
   useEffect(() => {
     loadProducts();
   }, []);
@@ -37,27 +46,6 @@ export default function Abastecimento() {
   return (
     <>
       <div className="bg-[--gasify-branco] min-h-[100vh]">
-        {/* Transformar em componente */}
-        <Header />
-
-        {/* Transformar em componente */}
-        <CompatibilityComponent />
-
-        <nav className="justify-around space-x-8 mx-4 my-14 text-center hidden md:flex">
-          <p className="w-[100%] font-medium border-[--gasify-preto] border-b-2 cursor-pointer text-[--gasify-preto] transition-all hover:border-b-[--gasifty-cinza] hover:text-[--gasify-cinza]"
-            id="nav-escolha-produto">
-            Abastecimento
-          </p>
-          <p className="w-[100%] font-medium border-[--gasify-preto-claro] border-b-2 cursor-pointer text-[--gasify-cinza-claro] transition-all hover:border-b-[--gasifty-cinza] hover:text-[--gasify-cinza]"
-            id="nav-uso-cc">
-            Use seu Carbon Cash para resgatar!
-          </p>
-          <p className="w-[100%] font-medium border-[--gasify-preto-claro] border-b-2 cursor-pointer text-[--gasify-cinza-claro] transition-all hover:border-b-[--gasifty-cinza] hover:text-[--gasify-cinza]"
-            id="nav-pagamento">
-            Pagamento
-          </p>
-        </nav>
-
         <main className="w-[85%] mx-auto mt-12 hidden md:flex md:flex-col">
           <div id="saldo-cards" className="flex justify-around space-x-8 mx-4 mt-8">
             <div className="shadow-md w-[50%] p-4 space-y-2 rounded-lg flex flex-col justify-around">

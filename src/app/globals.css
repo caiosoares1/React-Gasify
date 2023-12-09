@@ -43,6 +43,10 @@ body {
   --gasify-preto: #1D1D1F;
 }
 
+.poppins {
+  font-family: "Poppins", sans-serif;
+}
+
 body {
   font-family: "Poppins", sans-serif;
 }

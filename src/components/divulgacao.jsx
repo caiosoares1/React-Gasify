@@ -1,5 +1,4 @@
 import * as image from './images'
-
 export default function Divulgacao (){
     return (
     <>

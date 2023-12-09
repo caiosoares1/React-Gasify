@@ -150,3 +150,64 @@ export function GarotoLogin () {
         />
     )
 }
+
+export function Raio ({className='w-[2rem] h-[2rem]'}) {
+    return (
+        <img
+          src="/images/RaioEletrico.png"
+          alt="Raio icon"
+          className={className}
+        />
+    )
+}
+
+
+export function Oleo ({className='w-[2rem] h-[2rem]'}) {
+    return (
+        <img
+          src="/images/Oleo.png"
+          alt="Oleo icon"
+          className={className}
+        />
+    )
+}
+
+export function Lavagem ({className='w-[2rem] h-[2rem]'}) {
+    return (
+        <img
+          src="/images/lavagemVeiculo.png"
+          alt="Lavagem icon"
+          className={className}
+        />
+    )
+}
+
+export function CartaoCredito ({className='w-[2rem] h-[2rem]'}) {
+    return (
+        <img
+          src="/images/cartaoCredito.png"
+          alt="CartaoCredito icon"
+          className={className}
+        />
+    )
+}
+
+export function Pneus ({className='w-[2rem] h-[2rem]'}) {
+    return (
+        <img
+          src="/images/pneus.png"
+          alt="Pneus icon"
+          className={className}
+        />
+    )
+}
+
+export function Doacao ({className='w-[2rem] h-[2rem]'}) {
+    return (
+        <img
+          src="/images/doacao.png"
+          alt="Doacao icon"
+          className={className}
+        />
+    )
+}
