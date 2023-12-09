@@ -3,7 +3,7 @@ import * as image from '@/components/images';
 export default function UsoCC() {
     return (
         <>
-            <main className='w-[85%] mx-auto h-[100vh] mt-12 mb-[20rem] hidden md:flex md:flex-col'>
+            <main className='w-[85%] mx-auto h-auto mt-12 mb-[20rem] hidden md:flex md:flex-col'>
                 <div className='text-center font-semibold'>
                     <p className='text-3xl m-6'>Utilize seus créditos para resgatar produtos especiais</p>
                     <p className='text-2xl m-6'>resgate itens da nossa conveniência, serviços e facilidades</p>
@@ -95,6 +95,7 @@ export default function UsoCC() {
                     </div>
                 </div>
 
+                <button type="submit" className="w-full transition-all bg-[--gasify-verde-claro] mt-8 rounded-lg text-white font-semibold h-16 hover:bg-[--gasify-verde]">Ir ao pagamento</button>
                 
             </main>
         </>

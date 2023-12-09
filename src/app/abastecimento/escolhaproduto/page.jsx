@@ -78,9 +78,7 @@ export default function Abastecimento() {
             </button>
           </form>
         </main>
-        <footer className="">
-          <image.Footer />
-        </footer>
+
       </div>
     </>
   )
