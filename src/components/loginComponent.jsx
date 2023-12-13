@@ -1,8 +1,33 @@
+'use client';
 import * as image from '@/components/images'
 
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import supabase from '@/services/supabase';
+
+
 export default function LoginComponent() {
-    return (
-        <cfg className="h-[100vh] w-[100vw] bg-[--gasify-fundo] overscroll-none overflow-hidden">
+    const router = useRouter();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            const { user, error } = await supabase.auth.signInWithPassword({ email, password });
+            if (error) {
+              console.error('Erro ao fazer login:', error.message);
+            } else {
+              console.log('Usuário logado com sucesso:', user);
+              router.push('/abastecimento/escolhaproduto'); // Redirecionar para a página
+            }
+          } catch (error) {
+            console.error('Erro inesperado:', error.message);
+          }
+        };
+        
+    
+        return (
+            <cfg className="h-[100vh] w-[100vw] bg-[--gasify-fundo] overscroll-none overflow-hidden">
             <header class="h-[10vh] w-[100vw] relative">
                 <div class="flex justify-center md:justify-between items-start mx-auto mt-[75px] md:ml-[75px]">
                     <div class="w-[250px] lg:w-auto flex justify-around  gap-x-5">
@@ -28,21 +53,21 @@ export default function LoginComponent() {
                 <div class="flex flex-col justify-center items-center gap-y-[25px] w-auto h-auto self-start mt-10 2xl:mt-28 mb-[50] ">
                     <image.GarotoLogin/>
                         <h1 class="text-neutral-900 md:text-2xl 2xl:text-5xl font-semibold font-['Poppins'] gap-y-8 xl:text-4xl">Acesse sua conta!</h1>
-                        <form id="form" class="bg-white rounded-[20px] shadow-2xl 2xl:w-auto 2xl:h-auto xl:w-[auto] xl:h-[auto] z-10">
+                        <form id="form" onSubmit={handleLogin} class="bg-white rounded-[20px] shadow-2xl 2xl:w-auto 2xl:h-auto xl:w-[auto] xl:h-[auto] z-10">
                             <div class="flex flex-col p-10">
                                 <div class="flex flex-col justify-center mt-5 gap-y-1">
-                                    <label for="matricula" class="text-gray-800 text-xl font-semibold font-['Poppins']">Matrícula</label>
-                                    <input placeholder="12345678" type="matricula" name="matricula" id="matricula" class="border-2 border-black rounded-md p-6 xl:w-[500px] 2xl:w-[700px] h-[50px]" />
+                                    <label for="matricula" class="text-gray-800 text-xl font-semibold font-['Poppins']">Email</label>
+                                    <input placeholder="fulano@email.com" type="email" name="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} class="border-2 border-black rounded-md p-6 xl:w-[500px] 2xl:w-[700px] h-[50px]" />
                                 </div>
                                 <div class="flex flex-col justify-center mt-5 content-start gap-y-1">
                                     <label for="password" class="text-gray-800 text-xl font-semibold font-['Poppins']">Senha</label>
-                                    <input placeholder="12345678" type="password" name="password" id="password" class="border-2 border-black rounded-md p-6 xl:w-[500px] 2xl:w-[700px] h-[50px]" />
+                                    <input placeholder="12345678" type="password" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} class="border-2 border-black rounded-md p-6 xl:w-[500px] 2xl:w-[700px] h-[50px]" />
                                 </div>
                                 <div class="flex justify-end">
                                     <a class=" text-zinc-700 text-base font-normal font-['Poppins'] p-6 pr-0 transition hover-[text-]" href="">Esqueci a senha</a>
                                 </div>
                                 <div class="flex flex-col justify-center items-center mt-5 mb-4">
-                                    <button class="w-[251px] h-[52px] rounded-lg bg-[--gasify-verde-claro] text-white text-xl font-semibold font-['Poppins'] transition hover:bg-[--gasify-verde]">Login</button>
+                                    <button type="submit" class="w-[251px] h-[52px] rounded-lg bg-[--gasify-verde-claro] text-white text-xl font-semibold font-['Poppins'] transition hover:bg-[--gasify-verde]">Login</button>
                                 </div>
                             </div>
                         </form>

@@ -4,7 +4,7 @@ import Storage from '@/services/supabase'
 
 export const AbastecimentoContext = createContext({});
 
-export const AbastecimentoProvider = ({ children }) => {
+export function AbastecimentoProvider({ children }) {
     const [valorTotal, setValorTotal] = useState(0);
     const [CCTotal, setCCTotal] = useState(0);
     const [products, setProducts] = useState(null);

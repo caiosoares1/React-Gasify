@@ -1,39 +1,32 @@
 'use client';
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect } from 'react'
 import * as image from '@/components/images'
-import CardProduto from '@/components/cardProduto'
+import CardProduto from '@/components/forms/cardProduto'
 import { useRouter } from 'next/navigation';
 // import { products } from '@/data/products'
 // import { supabase } from '@/services/supabase'
 import Storage from '@/services/supabase'
+import { useAbastecimento } from '@/contexts/AbastecimentoContext';
 
 export default function Abastecimento() {
-  const [valorTotal, setValorTotal] = useState(0);
-  const [CCTotal, setCCTotal] = useState(0);
-  const [products, setProducts] = useState([]);
+//   const [valorTotal, setValorTotal] = useState(0);
+//   const [CCTotal, setCCTotal] = useState(0);
+//   const [products, setProducts] = useState([]);
 
-  const onChangeCard = (oldValorCard, oldCCCard, newValorCard = 0, newCCCard = 0) => {
-   const newValorTotal = (valorTotal - Number(oldValorCard) + Number(newValorCard)).toFixed(2);
-   const newCCTotal = (CCTotal - Number(oldCCCard) + Number(newCCCard)).toFixed(2);
-   setValorTotal(newValorTotal);
-   setCCTotal(newCCTotal);
- }
+//   const onChangeCard = (oldValorCard, oldCCCard, newValorCard = 0, newCCCard = 0) => {
+//    const newValorTotal = (valorTotal - Number(oldValorCard) + Number(newValorCard)).toFixed(2);
+//    const newCCTotal = (CCTotal - Number(oldCCCard) + Number(newCCCard)).toFixed(2);
+//    setValorTotal(newValorTotal);
+//    setCCTotal(newCCTotal);
+//  }
 
-  const loadProducts = async () => {
-    const products = await Storage.read('combustivel');
-    console.log(products);
-    setProducts(products);
-  }
+//   const loadProducts = async () => {
+//     const products = await Storage.read('combustivel');
+//     console.log(products);
+//     setProducts(products);
+//   }
 
-  // const handleClick = (event) => {
-  //   event.preventDefault();
-
-  //   // Falta validar se pode prosseguir
-
-  //   // Falta passar os dados para a próxima página
-
-  //   router.push('/abastecimento/usocc');
-  // };
+  const { valorTotal, CCTotal, products, onChangeCard, loadProducts } = useAbastecimento();
 
   const router = useRouter();
 

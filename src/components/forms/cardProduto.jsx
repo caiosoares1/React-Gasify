@@ -1,4 +1,4 @@
-import { formatNumberPer100 } from "../utils"; 
+import { formatNumberPer100 } from "../../utils"; 
 import { useState } from "react";
 import { supabase } from "@/services/supabase";
 

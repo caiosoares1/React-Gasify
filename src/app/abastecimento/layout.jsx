@@ -1,7 +1,7 @@
 import { Footer } from '@/components/images';
 import Header from '@/components/header';
 import CompatibilityComponent from '@/components/compatibility';
-import NavAbastecimento from '@/components/NavAbastecimento';
+import NavAbastecimento from '@/components/forms/NavAbastecimento';
 import { AbastecimentoProvider } from '@/contexts/AbastecimentoContext';
 
 export default function AbastecimentoLayout({ children }) {
@@ -14,16 +14,17 @@ export default function AbastecimentoLayout({ children }) {
           {metadata.title && <title>{metadata.title}</title>}
         </head> */}
         <body>
-        <Header />
-        <AbastecimentoProvider/>
-        <CompatibilityComponent />
-        <NavAbastecimento />
+        <AbastecimentoProvider>
+          <Header />
+          <CompatibilityComponent />
+          <NavAbastecimento />
 
-          {children}
+            {children}
 
-        <footer>
-          <Footer />
-        </footer>
+          <footer>
+            <Footer />
+          </footer>
+        </ AbastecimentoProvider>
         </body>
       </html>
     )

@@ -1,6 +1,7 @@
 'use client';
 import * as image from '@/components/images';
 import { useRouter } from 'next/navigation';
+import { useAbastecimento } from '@/contexts/AbastecimentoContext';
 
 export default function UsoCC() {
     const router = useRouter();
@@ -9,6 +10,8 @@ export default function UsoCC() {
     event.preventDefault();
     router.push('/abastecimento/pagamento');
   }
+    const CPF_REGEX = /^\d{11}$/;
+    const {CCTotal} = useAbastecimento();    
     return (
         <>
             <main className='w-[85%] mx-auto h-auto mt-12 mb-[20rem] hidden md:flex md:flex-col'>
@@ -18,13 +21,13 @@ export default function UsoCC() {
                 </div>
                 <div id='dados' className='flex my-[3rem] gap-x-[3rem]'>
                     <label htmlFor="cpf">CPF do cliente:</label>
-                    <input type="text" id='cpf' className='max-w-[12rem] border-gray-800 bg-white rounded-lg border-2 border-opacity-10 shadow-xl drop-shadow-xl'/>
+                    <input type="text" id='cpf' maxLength={11} pattern={CPF_REGEX} className='max-w-[12rem] border-gray-800 bg-white rounded-lg border-2 border-opacity-10 shadow-xl drop-shadow-xl'/>
                 </div>
                 <div className='flex justify-between text-xl font-semibold items-center'>
                     <p>Lorem Ipsum da Silva</p>
                     <div className='flex justify-between items-center gap-x-4'>
                         <image.GasifyLogo/>
-                        <p>Saldo total: {/* CHAMAR FUNÇÃO TOTAL CC AQUI */}CC</p>
+                        <p>Saldo total: {CCTotal}CC</p>
                     </div>
                 </div>
 

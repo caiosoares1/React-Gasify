@@ -54,4 +54,4 @@ async function remove(resource, id) {
   }
 }
 
-export default { create, read, update, remove };
+export default { supabase, create, read, update, remove };
