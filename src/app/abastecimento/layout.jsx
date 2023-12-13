@@ -2,6 +2,7 @@ import { Footer } from '@/components/images';
 import Header from '@/components/header';
 import CompatibilityComponent from '@/components/compatibility';
 import NavAbastecimento from '@/components/NavAbastecimento';
+import { AbastecimentoProvider } from '@/contexts/AbastecimentoContext';
 
 export default function AbastecimentoLayout({ children }) {
     return (
@@ -14,6 +15,7 @@ export default function AbastecimentoLayout({ children }) {
         </head> */}
         <body>
         <Header />
+        <AbastecimentoProvider/>
         <CompatibilityComponent />
         <NavAbastecimento />
 

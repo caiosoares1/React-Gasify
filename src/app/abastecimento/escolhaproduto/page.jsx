@@ -1,15 +1,11 @@
 'use client';
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import * as image from '@/components/images'
 import CardProduto from '@/components/cardProduto'
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 // import { products } from '@/data/products'
 // import { supabase } from '@/services/supabase'
 import Storage from '@/services/supabase'
-
-async function getProducts() {
-  return await Storage.read('combustivel');
-}
 
 export default function Abastecimento() {
   const [valorTotal, setValorTotal] = useState(0);
@@ -17,14 +13,14 @@ export default function Abastecimento() {
   const [products, setProducts] = useState([]);
 
   const onChangeCard = (oldValorCard, oldCCCard, newValorCard = 0, newCCCard = 0) => {
-    const newValorTotal = (valorTotal - Number(oldValorCard) + Number(newValorCard)).toFixed(2);
-    const newCCTotal = (CCTotal - Number(oldCCCard) + Number(newCCCard)).toFixed(2);
-    setValorTotal(newValorTotal);
-    setCCTotal(newCCTotal);
-  }
+   const newValorTotal = (valorTotal - Number(oldValorCard) + Number(newValorCard)).toFixed(2);
+   const newCCTotal = (CCTotal - Number(oldCCCard) + Number(newCCCard)).toFixed(2);
+   setValorTotal(newValorTotal);
+   setCCTotal(newCCTotal);
+ }
 
   const loadProducts = async () => {
-    const products = await getProducts();
+    const products = await Storage.read('combustivel');
     console.log(products);
     setProducts(products);
   }
@@ -38,6 +34,13 @@ export default function Abastecimento() {
 
   //   router.push('/abastecimento/usocc');
   // };
+
+  const router = useRouter();
+
+  const goToUsoCC = (event) => {
+    event.preventDefault();
+    router.push('/abastecimento/usocc');
+  }
 
   useEffect(() => {
     loadProducts();
@@ -69,12 +72,12 @@ export default function Abastecimento() {
           </div>
           <form>
             <div id="card-combustiveis" className="flex flex-wrap justify-between mx-auto my-12 gap-y-12 gap-x-12">
-              {products.map(product => <CardProduto product={product} onChangeCard={onChangeCard} key={product.id} />)}
+              {products && products.map(product => <CardProduto product={product} onChangeCard={onChangeCard} key={product.id} />)}
             </div>
 
-            <button type="submit"
+            <button type="submit" onClick={goToUsoCC}
               className="w-full transition-all bg-[--gasify-verde-claro] mt-8 rounded-lg text-white font-semibold h-16 hover:bg-[--gasify-verde]">
-              Ir ao pagamento
+                Ir ao pagamento
             </button>
           </form>
         </main>

@@ -1,6 +1,6 @@
 import * as image from '@/components/images';
 import CardProduto from '@/components/cardProduto';
-
+import { useAbastecimento } from '@/contexts/AbastecimentoContext';
 export default function EscolhaProduto({ products, onChangeCard, valorTotal, CCTotal, setValorTotal, setCCTotal }) {
     return(
         // <main className="w-[85%] mx-auto mt-12 hidden md:flex md:flex-col">

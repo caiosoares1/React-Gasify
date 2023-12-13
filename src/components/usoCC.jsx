@@ -1,6 +1,14 @@
+'use client';
 import * as image from '@/components/images';
+import { useRouter } from 'next/navigation';
 
 export default function UsoCC() {
+    const router = useRouter();
+
+    const goToPagamento = (event) => {
+    event.preventDefault();
+    router.push('/abastecimento/pagamento');
+  }
     return (
         <>
             <main className='w-[85%] mx-auto h-auto mt-12 mb-[20rem] hidden md:flex md:flex-col'>
@@ -95,7 +103,7 @@ export default function UsoCC() {
                     </div>
                 </div>
 
-                <button type="submit" className="w-full transition-all bg-[--gasify-verde-claro] mt-8 rounded-lg text-white font-semibold h-16 hover:bg-[--gasify-verde]">Ir ao pagamento</button>
+                <button type="submit" onClick={goToPagamento} className="w-full transition-all bg-[--gasify-verde-claro] mt-8 rounded-lg text-white font-semibold h-16 hover:bg-[--gasify-verde]">Ir ao pagamento</button>
                 
             </main>
         </>
