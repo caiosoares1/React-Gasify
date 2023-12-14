@@ -1,13 +1,16 @@
+'use client';
 import * as image from '@/components/images';
+import { useAbastecimento } from '@/contexts/AbastecimentoContext';
 
 export default function Pagamento() {
+    const {valorTotal, CCTotal} = useAbastecimento();
     return (
         <>
             <main className='w-[85%] mx-auto h-auto mt-12 mb-[20rem] hidden md:flex md:flex-col'>
                 <div id="saldo-cards" className="flex justify-around space-x-8 mx-4 mt-8">
                     <div className="shadow-md w-[50%] p-4 space-y-2 rounded-lg flex flex-col justify-around">
                         <p className="text-[--gasify-verde] font-bold text-center text-4xl" id="total">
-                            {/* {valorTotal ? "R$ " + valorTotal : "R$ 0,00"} */} R$ 0,00
+                            {valorTotal ? "R$ " + valorTotal : "R$ 0,00"} 
                         </p>
                         <p className="text-[--gasify-preto-claro] text-center text-xl font-semibold">
                             Valor a pagar
@@ -16,7 +19,7 @@ export default function Pagamento() {
 
                     <div className="shadow-md w-[50%] p-4 space-y-2 rounded-lg">
                         <p className="flex justify-center items-center text-[--gasify-verde] font-bold text-center text-4xl" id="total-cc">
-                            <image.GasifyLogo /><span id="total-cc-text" className="ml-2">{/*CCTotal ? CCTotal : 0} */}
+                            <image.GasifyLogo /><span id="total-cc-text" className="ml-2">{CCTotal ? CCTotal : 0}
                                 CC</span>
                         </p>
                         <p className="text-[--gasify-preto-claro] text-center text-xl font-semibold">
