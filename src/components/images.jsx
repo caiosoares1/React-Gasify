@@ -211,3 +211,23 @@ export function Doacao ({className='w-[2rem] h-[2rem]'}) {
         />
     )
 }
+
+export function Money ({className='w-[2rem] h-[2rem]'}) {
+    return (
+        <img
+          src="/images/money.png"
+          alt="Money icon"
+          className={className}
+        />
+    )
+}
+
+export function Pix ({className='w-[2rem] h-[2rem]'}) {
+    return (
+        <img
+          src="/images/pix.png"
+          alt="Pix icon"
+          className={className}
+        />
+    )
+}

@@ -31,7 +31,7 @@ export default function Pagamento() {
                 <div id='cardsPagamento' className='flex justify-around flex-wrap space-y-10 mb-[10rem]'>
                     <div id='cardOpcao' className='flex flex-col mx-10 mt-10 space-y-4 w-[20rem] h-[320px] rounded-xl border-2 shadow-xl'>
                         <div className=' m-auto rounded-full bg-green-600 w-[8rem] h-[8rem] my-10 content-center'>
-                            <image.Raio className='w-auto m-auto max-w-[6rem] mt-2' />
+                            <image.Money className='w-auto m-auto max-w-[6rem] mt-4' />
                         </div>
                         <div className='flex flex-col space-y-4'>
                             <p className='text-xl font-medium text-center'>Dinheiro</p>
@@ -39,7 +39,7 @@ export default function Pagamento() {
                     </div>
                     <div id='cardOpcao' className='flex flex-col mx-10 mt-10 space-y-4 w-[20rem] h-[320px] rounded-xl border-2 shadow-xl'>
                         <div className=' m-auto rounded-full bg-green-600 w-[8rem] h-[8rem] my-10 content-center'>
-                            <image.Raio className='w-auto m-auto max-w-[6rem] mt-2' />
+                            <image.Pix className='w-auto m-auto max-w-[6rem] mt-2' />
                         </div>
                         <div className='flex flex-col space-y-4'>
                             <p className='text-xl font-medium text-center'>Pix</p>
@@ -47,7 +47,7 @@ export default function Pagamento() {
                     </div>
                     <div id='cardOpcao' className='flex flex-col mx-10 mt-10 space-y-4 w-[20rem] h-[320px] rounded-xl border-2 shadow-xl'>
                         <div className=' m-auto rounded-full bg-green-600 w-[8rem] h-[8rem] my-10 content-center'>
-                            <image.Raio className='w-auto m-auto max-w-[6rem] mt-2' />
+                            <image.CartaoCredito className='w-auto m-auto max-w-[6rem] mt-2' />
                         </div>
                         <div className='flex flex-col space-y-4'>
                             <p className='text-xl font-medium text-center'>Débito ou Crédito</p>
