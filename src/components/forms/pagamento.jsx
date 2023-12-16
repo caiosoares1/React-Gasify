@@ -1,8 +1,21 @@
 'use client';
 import * as image from '@/components/images';
+import { useEffect, useState } from 'react';
 import { useAbastecimento } from '@/contexts/AbastecimentoContext';
 
 export default function Pagamento() {
+    const [card1Clicked, setCard1Clicked] = useState(false);
+    const [card2Clicked, setCard2Clicked] = useState(false);
+    const [card3Clicked, setCard3Clicked] = useState(false);
+    const handleCard1Click = () => {
+        setCard1Clicked(!card1Clicked);
+    }
+    const handleCard2Click = () => {
+        setCard2Clicked(!card2Clicked);
+    }
+    const handleCard3Click = () => {
+        setCard3Clicked(!card3Clicked);
+    }
     const {valorTotal, CCTotal} = useAbastecimento();
     return (
         <>
@@ -29,7 +42,7 @@ export default function Pagamento() {
                 </div>
                 <div className='my-[8rem] text-3xl font-semibold text-center'>Formas de Pagamento</div>
                 <div id='cardsPagamento' className='flex justify-around flex-wrap space-y-10 mb-[10rem]'>
-                    <div id='cardOpcao' className='flex flex-col mx-10 mt-10 space-y-4 w-[20rem] h-[320px] rounded-xl border-2 shadow-xl'>
+                    <div id='cardOpcao' className={`flex flex-col mx-10 mt-10 space-y-4 w-[20rem] h-[320px] rounded-xl border-2 shadow-xl ${card1Clicked ? 'cardClicked bg-green-600' : 'card'}`} onClick={handleCard1Click}>
                         <div className=' m-auto rounded-full bg-green-600 w-[8rem] h-[8rem] my-10 content-center'>
                             <image.Money className='w-auto m-auto max-w-[6rem] mt-4' />
                         </div>
@@ -37,7 +50,7 @@ export default function Pagamento() {
                             <p className='text-xl font-medium text-center'>Dinheiro</p>
                         </div>
                     </div>
-                    <div id='cardOpcao' className='flex flex-col mx-10 mt-10 space-y-4 w-[20rem] h-[320px] rounded-xl border-2 shadow-xl'>
+                    <div id='cardOpcao' className={`flex flex-col mx-10 mt-10 space-y-4 w-[20rem] h-[320px] rounded-xl border-2 shadow-xl ${card2Clicked ? 'cardClicked bg-green-600' : 'card'}`} onClick={handleCard2Click}>
                         <div className=' m-auto rounded-full bg-green-600 w-[8rem] h-[8rem] my-10 content-center'>
                             <image.Pix className='w-auto m-auto max-w-[6rem] mt-2' />
                         </div>
@@ -45,7 +58,7 @@ export default function Pagamento() {
                             <p className='text-xl font-medium text-center'>Pix</p>
                         </div>
                     </div>
-                    <div id='cardOpcao' className='flex flex-col mx-10 mt-10 space-y-4 w-[20rem] h-[320px] rounded-xl border-2 shadow-xl'>
+                    <div id='cardOpcao' className={`flex flex-col mx-10 mt-10 space-y-4 w-[20rem] h-[320px] rounded-xl border-2 shadow-xl ${card3Clicked ? 'cardClicked bg-green-600' : 'card'}`} onClick={handleCard3Click}>
                         <div className=' m-auto rounded-full bg-green-600 w-[8rem] h-[8rem] my-10 content-center'>
                             <image.CartaoCredito className='w-auto m-auto max-w-[6rem] mt-2' />
                         </div>

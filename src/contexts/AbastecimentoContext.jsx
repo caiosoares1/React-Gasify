@@ -29,8 +29,21 @@ export function AbastecimentoProvider({ children }) {
         setProducts(products);
     }
 
+    const getCpf = async (id) => {
+        const user = await Storage.read('cliente', id);
+        
+        if (Array.isArray(user) && user.length > 0) {
+          const { cpf, nome } = user[0];
+          console.log(user);
+          return { cpf, nome };
+        } else {
+          console.log('Nenhum dado do cliente encontrado para o CPF:', id);
+          return null;
+        }
+      }
+
     return (
-        <AbastecimentoContext.Provider value={{ valorTotal, CCTotal, products, onChangeCard, loadProducts, services, loadServices, setCCTotal }}>
+        <AbastecimentoContext.Provider value={{ valorTotal, CCTotal, products, onChangeCard, loadProducts, services, loadServices, setCCTotal, getCpf }}>
             {children}
         </AbastecimentoContext.Provider>
     );

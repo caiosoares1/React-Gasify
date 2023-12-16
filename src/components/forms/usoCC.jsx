@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAbastecimento } from '@/contexts/AbastecimentoContext';
 import CardService from './cardService';
+import InputMask from 'react-input-mask';
 export default function UsoCC() {
     const router = useRouter();
 
@@ -12,8 +13,11 @@ export default function UsoCC() {
     router.push('/abastecimento/pagamento');
     }
     const CPF_REGEX = /^\d{11}$/;
-    const {CCTotal, setCCTotal, services, loadServices} = useAbastecimento(); 
-    const [markedCards, setMarkedCards] = useState({});
+    const {CCTotal, setCCTotal, services, loadServices, getCpf} = useAbastecimento(); 
+    const [cpf, setCpf] = useState("");
+    const [cpfValido, setCpfValido] = useState(false);
+    const [clientName, setClientName] = useState("");
+
 
     const handleCardClick = (cardValue) => {
         const numericCardValue = parseFloat(cardValue);
@@ -25,10 +29,17 @@ export default function UsoCC() {
         }
       
         setCCTotal(prevCCTotal => parseFloat(prevCCTotal) + numericCardValue);
-      };
+    };
+
+    function validateCpf(cpf) {
+        const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+        return cpfRegex.test(cpf);
+    }
+      
     
     useEffect(() => {
         loadServices();
+        getCpf();
     }, []);
 
     return (
@@ -40,10 +51,24 @@ export default function UsoCC() {
                 </div>
                 <div id='dados' className='flex my-[3rem] gap-x-[3rem]'>
                     <label htmlFor="cpf">CPF do cliente:</label>
-                    <input type="text" id='cpf' maxLength={11} pattern={CPF_REGEX} className='max-w-[12rem] border-gray-800 bg-white rounded-lg border-2 border-opacity-10 shadow-xl drop-shadow-xl'/>
+
+                    <InputMask mask="999.999.999-99" id='cpf' value={cpf} onChange={async e => {
+                        setCpf(e.target.value);
+                        setCpfValido(validateCpf(e.target.value));
+                        // setClientName(clientName));
+                        const clientData = await getCpf(e.target.value);
+                        if (clientData) {
+                            setClientName(clientData.nome);
+                        } else {
+                            console.log("Cliente não encontrado");
+                        }
+                        }} className='max-w-[12rem] border-gray-800 bg-white rounded-lg border-2 border-opacity-10 shadow-xl drop-shadow-xl'>
+                        {(inputProps) => <input {...inputProps} type="text" />}
+                    </InputMask>
+                    {cpf && clientName && (cpfValido ? <p className='text-green-600'>CPF válido</p> : <p className='text-red-600'>CPF inválido</p>)}
                 </div>
                 <div className='flex justify-between text-xl font-semibold items-center'>
-                    <p>Lorem Ipsum da Silva</p>
+                {cpf === "" ? <p>Cliente não encontrado</p> : <p>{clientName}</p>}
                     <div className='flex justify-between items-center gap-x-4'>
                         <image.GasifyLogo/>
                         <p>Saldo total: {CCTotal}CC</p>
