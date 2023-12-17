@@ -95,7 +95,7 @@ export function AbastecimentoProvider({ children }) {
 
 
     return (
-        <AbastecimentoContext.Provider value={{ valorTotal, CCTotal, products, onChangeCard, loadProducts, services, loadServices, setCCTotal, getCpf, criarAtendimento, getFuncionario, login, nomeFuncionario, setNomeFuncionario, updateNomeFuncionario}}>
+        <AbastecimentoContext.Provider value={{ valorTotal, CCTotal, products, onChangeCard, loadProducts, services, loadServices, setCCTotal, getCpf, criarAtendimento, getFuncionario, login, nomeFuncionario, setNomeFuncionario, updateNomeFuncionario, setValorTotal}}>
             {children}
         </AbastecimentoContext.Provider>
     );

@@ -14,7 +14,8 @@ export default function Pagamento() {
     const [cpf, setCpf] = useState('');
 
     const router = useRouter();
-
+    
+    const { valorTotal, CCTotal, criarAtendimento, getCpf, getFuncionario, nomeFuncionario, setCCTotal, setValorTotal } = useAbastecimento();
     const NewAtendimento = async (event) => {
         event.preventDefault();
         // const dadosCliente = await getCpf(cpf);
@@ -22,6 +23,9 @@ export default function Pagamento() {
         // setCliente(dadosCliente);
         // setFuncionario(dadosFuncionario);
         // criarAtendimento(cliente, funcionario);
+        setModalAberto(false);
+        setCCTotal(0);
+        setValorTotal(0);
         router.push('/abastecimento/escolhaproduto');
     }
 
@@ -34,7 +38,6 @@ export default function Pagamento() {
     const handleCard3Click = () => {
         setCard3Clicked(!card3Clicked);
     }
-    const { valorTotal, CCTotal, criarAtendimento, getCpf, getFuncionario, nomeFuncionario } = useAbastecimento();
 
     const abrirModal = async () => {
         const dadosCliente = await getCpf(cpf);
