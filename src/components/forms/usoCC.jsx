@@ -19,21 +19,35 @@ export default function UsoCC() {
 
     const [cpfExists, setCpfExists] = useState(false);
 
-  async function handleCpfChange(e) {
-    setCpf(e.target.value);
-    const isValid = validateCpf(e.target.value);
-    setCpfValido(isValid);
-
-    if (isValid) {
-      const clientData = await getCpf(e.target.value);
-      if (clientData) {
-        setCpfExists(true);
-        // Rest of your code to set clientName and other states
-      } else {
-        setCpfExists(false);
+    function formatCpf(value) {
+        return value
+          .replace(/\D/g, '') // remove qualquer caracter que não seja número
+          .replace(/(\d{3})(\d)/, '$1.$2') // adiciona um ponto depois do terceiro dígito
+          .replace(/(\d{3})(\d)/, '$1.$2') // adiciona um ponto depois do sexto dígito
+          .replace(/(\d{3})(\d{1,2})/, '$1-$2') // adiciona um traço depois do nono dígito
+          .substring(0, 14); // limita o valor a 14 caracteres
       }
-    }
-  }
+
+    async function handleCpfChange(e) {
+        const cpf = formatCpf(e.target.value);
+        setCpf(cpf); // Atualize o estado cpf com o valor do input
+      
+        const cpfRegex = /^(\d{11}|\d{3}\.\d{3}\.\d{3}-\d{2})$/;
+      
+        if (cpfRegex.test(cpf)) {
+          setCpfValido(true);
+      
+          const clientData = await getCpf(cpf);
+          if (clientData) {
+            setCpfExists(true);
+            setClientName(clientData.nome);
+          } else {
+            setCpfExists(false);
+          }
+        } else {
+          setCpfValido(false);
+        }
+      }
 
     const handleCardClick = (cardValue) => {
         const numericCardValue = parseFloat(cardValue);
@@ -68,7 +82,7 @@ export default function UsoCC() {
                 <div id='dados' className='flex my-[3rem] gap-x-[3rem]'>
                     <label htmlFor="cpf">CPF do cliente:</label>
 
-                    <InputMask mask="999.999.999-99" id='cpf' value={cpf} onChange={async e => {
+                    {/* <InputMask mask="999.999.999-99" id='cpf' value={cpf} onChange={async e => {
                         handleCpfChange(e);
                         setCpf(e.target.value);
                         setCpfValido(validateCpf(e.target.value));
@@ -81,7 +95,8 @@ export default function UsoCC() {
                         }
                         }} className='max-w-[12rem] border-gray-800 bg-white rounded-lg border-2 border-opacity-10 shadow-xl drop-shadow-xl'>
                         {(inputProps) => <input {...inputProps} type="text" />}
-                    </InputMask>
+                    </InputMask> */}
+                    <input type="text" value={cpf}  onChange={handleCpfChange} />
                     {cpf && cpfValido && cpfExists ? <p className='text-green-600'>CPF válido</p> : <p className='text-red-600'>CPF inválido</p>}
                 </div>
                 <div className='flex justify-between text-xl font-semibold items-center'>
