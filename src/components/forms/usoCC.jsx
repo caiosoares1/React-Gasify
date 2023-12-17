@@ -60,12 +60,6 @@ export default function UsoCC() {
       
         setCCTotal(prevCCTotal => parseFloat(prevCCTotal) + numericCardValue);
     };
-
-    function validateCpf(cpf) {
-        const cpfRegex = /^(\d{11}|\d{3}\.\d{3}\.\d{3}-\d{2})$/;
-        return cpfRegex.test(cpf);
-    }
-      
     
     useEffect(() => {
         loadServices();
@@ -80,7 +74,7 @@ export default function UsoCC() {
                     <p className='text-2xl m-6'>resgate itens da nossa conveniência, serviços e facilidades</p>
                 </div>
                 <div id='dados' className='flex my-[3rem] gap-x-[3rem]'>
-                    <label htmlFor="cpf">CPF do cliente:</label>
+                    <label htmlFor="cpf" className='font-semibold'>CPF do cliente:</label>
 
                     {/* <InputMask mask="999.999.999-99" id='cpf' value={cpf} onChange={async e => {
                         handleCpfChange(e);
@@ -96,7 +90,7 @@ export default function UsoCC() {
                         }} className='max-w-[12rem] border-gray-800 bg-white rounded-lg border-2 border-opacity-10 shadow-xl drop-shadow-xl'>
                         {(inputProps) => <input {...inputProps} type="text" />}
                     </InputMask> */}
-                    <input type="text" value={cpf}  onChange={handleCpfChange} />
+                    <input type="text" value={cpf} className='max-w-[12rem] border-gray-800 bg-white rounded-lg border-4 border-opacity-10 px-4 shadow-xl drop-shadow-xl' onChange={handleCpfChange} />
                     {cpf && cpfValido && cpfExists ? <p className='text-green-600'>CPF válido</p> : <p className='text-red-600'>CPF inválido</p>}
                 </div>
                 <div className='flex justify-between text-xl font-semibold items-center'>
