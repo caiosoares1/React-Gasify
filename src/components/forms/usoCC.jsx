@@ -12,12 +12,28 @@ export default function UsoCC() {
     event.preventDefault();
     router.push('/abastecimento/pagamento');
     }
-    const CPF_REGEX = /^\d{11}$/;
     const {CCTotal, setCCTotal, services, loadServices, getCpf} = useAbastecimento(); 
     const [cpf, setCpf] = useState("");
     const [cpfValido, setCpfValido] = useState(false);
     const [clientName, setClientName] = useState("");
 
+    const [cpfExists, setCpfExists] = useState(false);
+
+  async function handleCpfChange(e) {
+    setCpf(e.target.value);
+    const isValid = validateCpf(e.target.value);
+    setCpfValido(isValid);
+
+    if (isValid) {
+      const clientData = await getCpf(e.target.value);
+      if (clientData) {
+        setCpfExists(true);
+        // Rest of your code to set clientName and other states
+      } else {
+        setCpfExists(false);
+      }
+    }
+  }
 
     const handleCardClick = (cardValue) => {
         const numericCardValue = parseFloat(cardValue);
@@ -32,7 +48,7 @@ export default function UsoCC() {
     };
 
     function validateCpf(cpf) {
-        const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+        const cpfRegex = /^(\d{11}|\d{3}\.\d{3}\.\d{3}-\d{2})$/;
         return cpfRegex.test(cpf);
     }
       
@@ -53,6 +69,7 @@ export default function UsoCC() {
                     <label htmlFor="cpf">CPF do cliente:</label>
 
                     <InputMask mask="999.999.999-99" id='cpf' value={cpf} onChange={async e => {
+                        handleCpfChange(e);
                         setCpf(e.target.value);
                         setCpfValido(validateCpf(e.target.value));
                         // setClientName(clientName));
@@ -65,10 +82,10 @@ export default function UsoCC() {
                         }} className='max-w-[12rem] border-gray-800 bg-white rounded-lg border-2 border-opacity-10 shadow-xl drop-shadow-xl'>
                         {(inputProps) => <input {...inputProps} type="text" />}
                     </InputMask>
-                    {cpf && clientName && (cpfValido ? <p className='text-green-600'>CPF válido</p> : <p className='text-red-600'>CPF inválido</p>)}
+                    {cpf && cpfValido && cpfExists ? <p className='text-green-600'>CPF válido</p> : <p className='text-red-600'>CPF inválido</p>}
                 </div>
                 <div className='flex justify-between text-xl font-semibold items-center'>
-                {cpf === "" ? <p>Cliente não encontrado</p> : <p>{clientName}</p>}
+                {cpf && clientName ? <p>{clientName}</p> : <p>Cliente não encontrado</p>}
                     <div className='flex justify-between items-center gap-x-4'>
                         <image.GasifyLogo/>
                         <p>Saldo total: {CCTotal}CC</p>

@@ -54,4 +54,18 @@ async function remove(resource, id) {
   }
 }
 
-export default { supabase, create, read, update, remove };
+async function readFuncionario(resource, params) {
+  const { data, error } = await supabase
+    .from(resource)
+    .select('*')
+    .eq('email', params.email)
+    .eq('password', params.password);
+
+  if (error) {
+    throw error;
+  }
+
+  return data;
+}
+
+export default { supabase, create, read, update, remove, readFuncionario };

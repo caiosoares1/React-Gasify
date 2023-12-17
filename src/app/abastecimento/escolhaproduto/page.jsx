@@ -11,7 +11,7 @@ import { useAbastecimento } from '@/contexts/AbastecimentoContext';
 export default function Abastecimento() {
 
 
-  const { valorTotal, CCTotal, products, onChangeCard, loadProducts } = useAbastecimento();
+  const { valorTotal, CCTotal, products, onChangeCard, loadProducts, nomeFuncionario } = useAbastecimento();
 
   const router = useRouter();
 

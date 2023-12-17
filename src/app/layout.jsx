@@ -1,5 +1,7 @@
 // import { Poppins } from 'next/font/google'
 import './globals.css'
+import { AbastecimentoProvider } from '@/contexts/AbastecimentoContext';
+
 
 // const poppins = Poppins({style: 'normal', weight: '400', preload: false, display: 'swap', serif: false})
 
@@ -17,7 +19,11 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         {/* {metadata.title && <title>{metadata.title}</title>} */}
       </head>
-      <body className="poppins">{children}</body>
+      <body className="poppins">
+        <AbastecimentoProvider>
+          {children}
+        </AbastecimentoProvider>
+      </body>
     </html>
   )
 }
