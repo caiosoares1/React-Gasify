@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAbastecimento } from '@/contexts/AbastecimentoContext';
 import CardService from './cardService';
-import InputMask from 'react-input-mask';
 export default function UsoCC() {
     const router = useRouter();
 
@@ -75,21 +74,6 @@ export default function UsoCC() {
                 </div>
                 <div id='dados' className='flex my-[3rem] gap-x-[3rem]'>
                     <label htmlFor="cpf" className='font-semibold'>CPF do cliente:</label>
-
-                    {/* <InputMask mask="999.999.999-99" id='cpf' value={cpf} onChange={async e => {
-                        handleCpfChange(e);
-                        setCpf(e.target.value);
-                        setCpfValido(validateCpf(e.target.value));
-                        // setClientName(clientName));
-                        const clientData = await getCpf(e.target.value);
-                        if (clientData) {
-                            setClientName(clientData.nome);
-                        } else {
-                            console.log("Cliente não encontrado");
-                        }
-                        }} className='max-w-[12rem] border-gray-800 bg-white rounded-lg border-2 border-opacity-10 shadow-xl drop-shadow-xl'>
-                        {(inputProps) => <input {...inputProps} type="text" />}
-                    </InputMask> */}
                     <input type="text" value={cpf} className='max-w-[12rem] border-gray-800 bg-white rounded-lg border-4 border-opacity-10 px-4 shadow-xl drop-shadow-xl' onChange={handleCpfChange} />
                     {cpf && cpfValido && cpfExists ? <p className='text-green-600'>CPF válido</p> : <p className='text-red-600'>CPF inválido</p>}
                 </div>

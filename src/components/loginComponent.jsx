@@ -3,7 +3,6 @@ import * as image from '@/components/images'
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import supabase from '@/services/supabase';
 import { useAbastecimento } from '@/contexts/AbastecimentoContext';
 
 export default function LoginComponent() {
@@ -21,20 +20,6 @@ export default function LoginComponent() {
         } else {
             console.log('Erro ao fazer login');
         }
-
-        // e.preventDefault();
-        // try {
-        //     const { user, error } = await supabase.auth.signInWithPassword({ email, password });
-        //     if (error) {
-        //       console.error('Erro ao fazer login:', error.message);
-        //     } else {
-        //       console.log('Usuário logado com sucesso:', user);
-        //       router.push('/abastecimento/escolhaproduto'); // Redirecionar para a página
-        //     }
-        //   } catch (error) {
-        //     console.error('Erro inesperado:', error.message);
-        //   }
-        // };
         
     
     }

@@ -15,14 +15,9 @@ export default function Pagamento() {
 
     const router = useRouter();
     
-    const { valorTotal, CCTotal, criarAtendimento, getCpf, getFuncionario, nomeFuncionario, setCCTotal, setValorTotal } = useAbastecimento();
+    const { valorTotal, CCTotal, getCpf, getFuncionario, nomeFuncionario, setCCTotal, setValorTotal } = useAbastecimento();
     const NewAtendimento = async (event) => {
         event.preventDefault();
-        // const dadosCliente = await getCpf(cpf);
-        // const dadosFuncionario = await getFuncionario(funcionario)
-        // setCliente(dadosCliente);
-        // setFuncionario(dadosFuncionario);
-        // criarAtendimento(cliente, funcionario);
         setModalAberto(false);
         setCCTotal(0);
         setValorTotal(0);
@@ -44,7 +39,6 @@ export default function Pagamento() {
         const dadosFuncionario = await getFuncionario(funcionario)
         setCliente(dadosCliente);
         setFuncionario(dadosFuncionario);
-        // criarAtendimento(cliente, funcionario);
         setModalAberto(true);
     }
     const fecharModal = () => {
@@ -124,7 +118,7 @@ export default function Pagamento() {
                                     </div>
                                     <div className='flex justify-center m-8'>
                                         <p className='font-semibold text-xl'>Carbon Cash Total:</p>
-                                        <p className='font-normal text-xl mx-2'>{CCTotal} Carbon Cash</p>
+                                        <p className='font-normal text-xl mx-2'>{CCTotal} CC</p>
                                     </div>
                                     
                                 </div>

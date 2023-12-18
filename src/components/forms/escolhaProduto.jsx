@@ -3,9 +3,7 @@ import { useState, useEffect } from 'react'
 import * as image from '@/components/images'
 import CardProduto from '@/components/forms/cardProduto'
 import { useRouter } from 'next/navigation';
-// import { products } from '@/data/products'
-// import { supabase } from '@/services/supabase'
-import Storage from '@/services/supabase'
+
 import { useAbastecimento } from '@/contexts/AbastecimentoContext';
 
 export default function Abastecimento() {

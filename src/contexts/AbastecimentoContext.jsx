@@ -1,7 +1,6 @@
 'use client';
 import { createContext, useState, useContext, useEffect } from 'react';
 import Storage from '@/services/supabase'
-import { supabase } from '@/services/supabase';
 
 export const AbastecimentoContext = createContext({});
 
