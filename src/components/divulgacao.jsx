@@ -1,5 +1,12 @@
+'use client';
 import * as image from './images'
+import { useRouter } from 'next/navigation'
 export default function Divulgacao (){
+    const router = useRouter();
+    const GoToLogin = async (event) => {
+        event.preventDefault();
+        router.push('/login');
+    }
     return (
     <>
             <div className="scale-90"></div>
@@ -8,6 +15,8 @@ export default function Divulgacao (){
                     <image.GasifyLogo />
                     <image.Gasify />
                 </div>
+                <button className='w-[5%] content-center 
+                                 transition-all bg-[--gasify-verde-claro] rounded-lg text-white font-semibold h-16 hover:bg-[--gasify-verde]' onClick={GoToLogin}>Login</button>
             </header>
             <main>
                 <section id="dados" className="flex gap-x-16 justify-center items-center h-[300px]">
