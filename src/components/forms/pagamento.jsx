@@ -123,11 +123,9 @@ export default function Pagamento() {
                                     
                                 </div>
                                 <div className='flex justify-center items-center'>
-                                <button className='w-[30%] content-center m-auto
-                                 transition-all bg-[--gasify-verde-claro] mt-8 rounded-lg text-white font-semibold h-16 hover:bg-[--gasify-verde]' onClick={fecharModal}>Fechar</button>
-                                 <button className='w-[30%] content-center m-auto
+                        
+                                 <button className='w-[50%] content-center m-auto
                                  transition-all bg-[--gasify-verde-claro] mt-8 rounded-lg text-white font-semibold h-16 hover:bg-[--gasify-verde]' onClick={NewAtendimento}>Novo Atendimento</button>
-
 
                                 </div>
                             </div>

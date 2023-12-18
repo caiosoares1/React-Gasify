@@ -38,7 +38,7 @@ export default function Abastecimento() {
 
             <div className="shadow-md w-[50%] p-4 space-y-2 rounded-lg">
               <p className="flex justify-center items-center text-[--gasify-verde] font-bold text-center text-4xl" id="total-cc">
-                <image.GasifyLogo /><span id="total-cc-text" className="ml-2">{CCTotal ? CCTotal : 0}
+                <image.GasifyLogo /><span id="total-cc-text" className="ml-2">{CCTotal ? CCTotal : 0}</span><span className="ml-2">
                   CC</span>
               </p>
               <p className="text-[--gasify-preto-claro] text-center text-xl font-semibold">

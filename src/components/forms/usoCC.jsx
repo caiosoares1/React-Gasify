@@ -57,7 +57,7 @@ export default function UsoCC() {
           return;
         }
       
-        setCCTotal(prevCCTotal => parseFloat(prevCCTotal) + numericCardValue);
+        setCCTotal(prevCCTotal => parseFloat((parseFloat(prevCCTotal) + numericCardValue).toFixed(2)));
     };
     
     useEffect(() => {
@@ -79,9 +79,9 @@ export default function UsoCC() {
                 </div>
                 <div className='flex justify-between text-xl font-semibold items-center'>
                 {cpf && clientName ? <p>{clientName}</p> : <p>Cliente não encontrado</p>}
-                    <div className='flex justify-between items-center gap-x-4'>
-                        <image.GasifyLogo/>
-                        <p>Saldo total: {CCTotal}CC</p>
+                    <div className='flex justify-between items-center '>
+                        <image.GasifyLogo className='mr-4'/>
+                        <span>Saldo total: {CCTotal}</span><span className='ml-2'>CC</span>
                     </div>
                 </div>
 
